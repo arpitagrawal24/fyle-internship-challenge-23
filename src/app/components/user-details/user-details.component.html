@@ -1,0 +1,44 @@
+<div
+  class="bg-white p-4 m-2 flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4"
+>
+  <img
+    src="{{ user?.avatar_url }}"
+    alt="User Avatar"
+    class="w-60 h-60 md:w-80 md:h-80 rounded-full"
+  />
+  <div class="flex flex-col items-start space-y-2">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-2">
+      {{ user?.name }}
+    </h2>
+    <p class="text-gray-600">{{ user?.bio || "No bio available" }}</p>
+    <div
+      class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-4"
+    >
+      <div><strong>Username:</strong> {{ user?.login }}</div>
+      <div>
+        <strong>Location:</strong> {{ user?.location || "Not available" }}
+      </div>
+      <div><strong>Public Repositories:</strong> {{ user?.public_repos }}</div>
+    </div>
+    <div
+      class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-2"
+    >
+      <div><strong>Followers:</strong> {{ user?.followers }}</div>
+      <div><strong>Following:</strong> {{ user?.following }}</div>
+    </div>
+    <div>
+      <i class="fa-solid fa-link"></i>
+      <a
+        href="{{ user?.blog }}"
+        class="text-blue-600 ml-2 hover:underline"
+        target="_blank"
+        >{{ user?.blog || "No website available" }}</a
+      >
+    </div>
+  </div>
+</div>
+<a
+  href="{{ user?.html_url }}"
+  class="text-blue-600 hover:underline text-center mt-4 block"
+  >View on GitHub</a
+>

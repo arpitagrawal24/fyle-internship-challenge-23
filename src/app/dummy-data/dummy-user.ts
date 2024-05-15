@@ -1,0 +1,38 @@
+export const dummyUser = {
+  login: 'arpitagrawal24',
+  id: 78686299,
+  node_id: 'MDQ6VXNlcjc4Njg2Mjk5',
+  avatar_url: 'https://avatars.githubusercontent.com/u/78686299?v=4',
+  gravatar_id: '',
+  url: 'https://api.github.com/users/arpitagrawal24',
+  html_url: 'https://github.com/arpitagrawal24',
+  followers_url: 'https://api.github.com/users/arpitagrawal24/followers',
+  following_url:
+    'https://api.github.com/users/arpitagrawal24/following{/other_user}',
+  gists_url: 'https://api.github.com/users/arpitagrawal24/gists{/gist_id}',
+  starred_url:
+    'https://api.github.com/users/arpitagrawal24/starred{/owner}{/repo}',
+  subscriptions_url:
+    'https://api.github.com/users/arpitagrawal24/subscriptions',
+  organizations_url: 'https://api.github.com/users/arpitagrawal24/orgs',
+  repos_url: 'https://api.github.com/users/arpitagrawal24/repos',
+  events_url: 'https://api.github.com/users/arpitagrawal24/events{/privacy}',
+  received_events_url:
+    'https://api.github.com/users/arpitagrawal24/received_events',
+  type: 'User',
+  site_admin: false,
+  name: 'Arpit Agrawal',
+  company: null,
+  blog: 'https://arpit24.vercel.app',
+  location: null,
+  email: null,
+  hireable: null,
+  bio: null,
+  twitter_username: null,
+  public_repos: 39,
+  public_gists: 0,
+  followers: 5,
+  following: 7,
+  created_at: '2021-02-07T11:58:16Z',
+  updated_at: '2024-05-12T12:10:32Z',
+};

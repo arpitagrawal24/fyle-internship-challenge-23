@@ -1,5 +1,70 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div *ngIf="zeroState" class="flex flex-col min-h-screen">
+  <app-header (search)="searchUser($event)"></app-header>
+  <div
+    class="text-gray-600 text-center text-2xl font-bold py-5 md:h-[45vh] h-[55vh]"
+  >
+    Search for a user to view their repositories.
   </div>
+  <app-footer class="mt-auto"></app-footer>
+</div>
+
+<div *ngIf="!zeroState" class="flex flex-col min-h-screen">
+  <app-header (search)="searchUser($event)"></app-header>
+
+  <app-user-details *ngIf="user" [user]="user"></app-user-details>
+
+  <div
+    *ngIf="!user && !loading"
+    class="text-gray-600 text-center text-2xl font-bold py-5 md:h-[45vh] h-[55vh]"
+  >
+    User not found.
+  </div>
+
+  <div
+    *ngIf="!loading && user && !repos.length"
+    class="text-gray-600 text-center text-2xl font-bold py-5 md:h-[45vh] h-[55vh]"
+  >
+    No repositories found for this user.
+  </div>
+
+  <div
+    *ngIf="loading"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4"
+  >
+    <div *ngFor="let _ of [1, 2, 3]">
+      <div class="animate-pulse bg-gray-200 rounded-md p-4 m-2">
+        <div class="h-4 w-1/2 mb-2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-3/4 mb-2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-5/6 mb-2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-full mb-2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-3/4 mb-2 bg-gray-300 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!loading && user && user.login"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
+  >
+    <app-repository-card
+      *ngFor="let repo of repos"
+      [repo]="repo"
+      [loading]="loading"
+    ></app-repository-card>
+  </div>
+
+  <app-pagination
+    [totalItems]="totalRepos"
+    [itemsPerPage]="pageSize"
+    [currentPage]="currentPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (pageChange)="onPageChange($event)"
+    (pageSizeChange)="onPageSizeChange($event)"
+  ></app-pagination>
+
+  <app-footer class="mt- auto"></app-footer>
+</div>
+
+<div class="content hidden">
+  <span>fyle-frontend-challenge app is running!</span>
 </div>

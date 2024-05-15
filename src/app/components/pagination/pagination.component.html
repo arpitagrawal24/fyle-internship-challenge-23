@@ -1,0 +1,49 @@
+<div class="flex justify-start mb-4 ml-4">
+  <select
+    class="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mr-2"
+    [(ngModel)]="itemsPerPage"
+    (change)="onPageSizeChange($event)"
+  >
+    <option *ngFor="let option of pageSizeOptions" [value]="option">
+      Page size: {{ option }}
+    </option>
+  </select>
+</div>
+
+<div class="flex justify-between items-center mt-4 mx-4">
+  <div class="mr-4">
+    Showing {{ getRangeStart() }} to {{ getRangeEnd() }} of
+    {{ totalItems }} results
+  </div>
+
+  <div class="flex m-0 p-0">
+    <button
+      (click)="onPageChange(currentPage - 1)"
+      [disabled]="currentPage <= 1"
+      class="px-3 m-0 py-2 border border-gray-300 rounded-l-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-600 hover:bg-gray-100 transition duration-150 ease-in-out"
+    >
+      <i class="fa-solid fa-less-than"></i>
+    </button>
+
+    <ul class="flex list-none p-0">
+      <li
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        (click)="onPageChange(i + 1)"
+        class="cursor-pointer py-2 px-3 border border-gray-300 bg-white text-gray-600 hover:bg-blue-700 hover:text-white transition duration-150 ease-in-out"
+        [class.bg-blue-800]="currentPage === i + 1"
+        [class.text-white]="currentPage === i + 1"
+        [class.border-blue-700]="currentPage === i + 1"
+      >
+        {{ i + 1 }}
+      </li>
+    </ul>
+
+    <button
+      (click)="onPageChange(currentPage + 1)"
+      [disabled]="currentPage >= totalPages"
+      class="px-3 py-2 border border-gray-300 rounded-r-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-600 hover:bg-gray-100 transition duration-150 ease-in-out"
+    >
+      <i class="fa-solid fa-greater-than"></i>
+    </button>
+  </div>
+</div>
